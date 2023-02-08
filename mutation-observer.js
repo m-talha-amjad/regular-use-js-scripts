@@ -6,7 +6,8 @@
 // • if (node.nodeType === Node.ELEMENT_NODE): This line checks if the current node is an element node.
 // • if (node.id === "zip_search"): This line checks if the id of the current node is equal to "zip_search".
 // • node.innerHTML = "Submit": If both conditions are met, this line sets the innerHTML of the current node to "Submit".
-
+let targetElement = document.getElementById("SpecificID");
+if (targetElement) {
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
 
@@ -33,9 +34,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   });
   
-  observer.observe(document.getElementById("SpecificID"), { childList: true, subtree: true });
+  observer.observe(targetElement, { childList: true, subtree: true });
 });
-
+}
 
 
 // 1. observer.observe: This method starts observing the specified target for mutations (changes to its children).
