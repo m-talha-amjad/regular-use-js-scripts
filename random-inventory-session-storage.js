@@ -1,6 +1,6 @@
+// Motion Theme wivio.nl
 
-
-        // Get the first product element
+// Get the first product element
 var productElement = document.querySelector('.product-section');
 
 // Get the product ID from the data-product-id attribute
