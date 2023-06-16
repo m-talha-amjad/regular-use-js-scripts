@@ -11,8 +11,10 @@ if (sessionStorage.getItem(productId)) {
   // Retrieve the previously assigned number
   var assignedNumber = parseInt(sessionStorage.getItem(productId));
 
-  // Decrease the assigned number by 1
-  assignedNumber--;
+// Decrease the assigned number by 1 if it is greater than or equal to 3
+  if (assignedNumber >= 4) {
+    assignedNumber--;
+  }
 // Get the element with the "custom-inventory" class
 var inventoryElement = document.querySelector('.custom-inventory');
 
