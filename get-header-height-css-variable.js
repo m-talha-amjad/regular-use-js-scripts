@@ -1,1 +1,1 @@
-document.documentElement.style.setProperty('--header-nav-height', document.getElementById('header-sticky-wrapper').offsetHeight + 'px');
+document.documentElement.style.setProperty('--header-nav-height', document.querySelector('#shopify-section-header .header-wrapper').offsetHeight + 'px');
