@@ -5,3 +5,21 @@ submitBtn.addEventListener('click', (e) => {
   
   window.location.href = '/pages/contact'; 
 });
+
+
+// Get all submit buttons
+const submitBtns = document.querySelectorAll('.product-form__submit');
+
+// Loop through each one 
+submitBtns.forEach(function(btn) {
+
+  // Attach listener
+  btn.addEventListener('click', (e) => {
+    
+    e.preventDefault();
+    
+    window.location.href = '/pages/contact';
+    
+  });
+  
+});
