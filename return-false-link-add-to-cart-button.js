@@ -26,3 +26,27 @@ submitBtn.addEventListener('click', (e) => {
   } else {
   // no submit buttons found
 }
+
+
+// Select by data attribute
+const submitBtns = document.querySelectorAll('[data-cart-btn-override="true"]'); 
+
+if (submitBtns.length > 0) {
+
+  submitBtns.forEach(function(btn) {
+
+    // Make button accessible 
+    btn.setAttribute('role', 'link');
+    btn.setAttribute('tabindex', '0');
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      window.location.href = '/pages/contact'; 
+    });
+
+  });
+
+} else {
+  // no buttons found
+}
