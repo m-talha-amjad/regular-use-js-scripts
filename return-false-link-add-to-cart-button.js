@@ -7,19 +7,22 @@ submitBtn.addEventListener('click', (e) => {
 });
 
 
-// Get all submit buttons
-const submitBtns = document.querySelectorAll('.product-form__submit');
-
-// Loop through each one 
-submitBtns.forEach(function(btn) {
-
-  // Attach listener
-  btn.addEventListener('click', (e) => {
+  // Get all submit buttons
+  const submitBtns = document.querySelectorAll('.quick-add__submit');
+  if (submitBtns.length > 0) {
+    // Loop through each one 
+    submitBtns.forEach(function(btn) {
     
-    e.preventDefault();
-    
-    window.location.href = '/pages/contact';
-    
-  });
-  
-});
+      // Attach listener
+      btn.addEventListener('click', (e) => {
+        
+        e.preventDefault();
+        
+        window.location.href = '/pages/contact';
+        
+      });
+      
+    });
+  } else {
+  // no submit buttons found
+}
