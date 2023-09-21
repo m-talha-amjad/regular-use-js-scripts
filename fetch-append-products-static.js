@@ -1,8 +1,7 @@
-const loadMoreButton = document.getElementById('view-more-button');
+  const loadMoreButton = document.getElementById('view-more-button');
   try {
       // Store the URL for the next page
       const nextUrl = '/collections/all?page=2';
-      loadMoreButton.dataset.pageUrl = nextUrl;
 
       // Fetch the next page in the background
       const response = await fetch(nextUrl);
@@ -27,6 +26,7 @@ const loadMoreButton = document.getElementById('view-more-button');
 
         // Update the URL for the next page of products
         nextPageUrl = responseGrid.getAttribute('data-next-page-url');
+        loadMoreButton.setAttribute("href", nextPageUrl);
       }
     } catch (error) {
       console.error('Error fetching and appending products:', error);
