@@ -17,7 +17,7 @@
 });
 
 
-// if siblings are the detail element use this 
+// if siblings are the detail element use this used in venue theme
 
  document.querySelectorAll('.collection-sidebar__wrapper .collection-sidebar__filter-group summary').forEach((summary) => {
     summary.addEventListener('click', (event) => {
