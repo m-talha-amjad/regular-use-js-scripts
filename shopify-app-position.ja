@@ -1,0 +1,24 @@
+// TALHA =======
+
+// SIZE CHART APP POSITION ----
+const piButtonSubmit = document.querySelector('[pi-button-submit]');
+let sizeChartInterval = setInterval(() => {
+  const piAppSizeChart = document.querySelector('#ccpops-trigger-container');
+  if (piAppSizeChart) {
+    piButtonSubmit.after(piAppSizeChart);
+    clearInterval(sizeChartInterval); 
+  }
+}, 1000);
+
+// let sizeChartInterval = setInterval(() => {
+//   let piButtonSubmit = document.querySelector('.shopify-payment-button__more-options');
+//   let piAppSizeChart = document.querySelector('#ccpops-trigger-container');
+//   if (piAppSizeChart && piButtonSubmit) {
+//     piButtonSubmit.before(piAppSizeChart);
+//     clearInterval(sizeChartInterval); 
+//   }
+// }, 1000);
+// SIZE CHART APP POSITION end --
+
+
+// TALHA END =====
