@@ -1,0 +1,72 @@
+
+<script id="product-json" type="application/json">
+{
+  "options": [
+    {% for option in product.options_with_values %}
+    {
+      "name": {{ option.name | json }},
+      "position": {{ option.position }},
+      "values": {{ option.values | json }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  "variants": [
+    {% for variant in product.variants %}
+    {
+      "id": {{ variant.id }},
+      "title": {{ variant.title | json }},
+      "options": {{ variant.options | json }},
+      "description": {{ variant.metafields.pic.short_description | metafield_text | json }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const productJsonEl = document.getElementById("product-json");
+  if (!productJsonEl) return;
+  const productData = JSON.parse(productJsonEl.textContent);
+
+  const optionInputs = document.querySelectorAll(".single-option-selector__radio");
+
+  optionInputs.forEach(input => {
+    input.addEventListener("change", handleVariantChange);
+  });
+
+  function handleVariantChange() {
+    console.log("handleVariantChange");
+
+    // Collect selected values based on data-index
+    const selectedOptions = [];
+    ["option1", "option2", "option3"].forEach((optKey, index) => {
+      const checked = document.querySelector(`input[data-index="${optKey}"]:checked`);
+      if (checked) {
+        selectedOptions[index] = checked.value;
+        console.log(`Selected ${optKey}:`, checked.value);
+      }
+    });
+
+    // Find matching variant
+    const matchedVariant = productData.variants.find(v =>
+      v.options.every((optVal, i) => optVal === selectedOptions[i])
+    );
+
+    console.log("Matched Variant:", matchedVariant);
+
+    if (matchedVariant) {
+      document.querySelectorAll(".phi--variant-description").forEach(desc => {
+        desc.classList.add("phi--hidden");
+      });
+
+      const targetDesc = document.querySelector(`.phi--variant-description-${matchedVariant.id}`);
+      console.log("Target Description:", targetDesc);
+
+      if (targetDesc) {
+        targetDesc.classList.remove("phi--hidden");
+      }
+    }
+  }
+});
+</script>
