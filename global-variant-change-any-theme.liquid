@@ -1,3 +1,52 @@
+<style>
+/* Variant Short Descriptions Styling */
+  .phi--variant-descriptions {
+    margin: 1rem 0;
+  }
+  
+  .phi--variant-description {
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .phi--variant-description.phi--hidden {
+    opacity: 0;
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .phi--variant-description-content {
+    padding: 1rem;
+    background-color: var(--color-body, #f8f8f8);
+    border: 1px solid var(--g-input-border, #e0e0e0);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-body-text, #333);
+  }
+  
+  .phi--variant-description-content p {
+    margin: 0;
+  }
+  
+  .phi--variant-description-content p + p {
+    margin-top: 0.5rem;
+  }
+</style>
+
+<!-- Variant Short Descriptions -->
+  <div class="phi--variant-descriptions mb-4">
+    {% for variant in product.variants %}
+      {% if variant.metafields.pic.short_description != blank %}
+        <div class="phi--variant-description phi--variant-description-{{ variant.id }} {% unless variant == current_variant %}phi--hidden{% endunless %}" data-variant-id="{{ variant.id }}">
+          <div class="phi--variant-description-content">
+            {{ variant.metafields.pic.short_description | metafield_text }}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
 
 <script id="product-json" type="application/json">
 {
